@@ -6,7 +6,15 @@
         <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
         <link rel="stylesheet" href="main.css"/>
         <!--Feel free to add more CSS files as needed-->
-        <script type="text/javascript" src="https://d3js.org/d3.v5.min.js"></script>
+        <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+
+        <!-- Color scale -->
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+<!-- Add 2 buttons -->
+<button onclick="update(data1)">North America Sales</button>
+<button onclick="update(data2)">Europe Sales</button>
+<button onclick="update(data3)">Japan Sales</button>
     </head>
 <body>
     <div class="header">
@@ -16,13 +24,49 @@
     <div class="row">
         <div class="col-lg-6">
             <div id="graph1"></div>
+
             <div id="graph2"></div><br/>
         </div>
         <div class="col-lg-6">
             <div id="graph3"></div>
         </div>
     </div>
+    <p>   Written questions  </p>
+    <p>  1) Description of how the dashboard answers the questions </p>
+    <p>     The first question asks us to find out the top 10 games of all time. In my Dashboard, I have created a bar chart that indicates the games sorted by their Global Sales. I have used Global_Sales to determine
+            the best 10 games. The next question expects us to break down the genre sales per region. For this purpose,I have created an interactive bar-chart. You can toggle the buttons present on the top left of the
+            dashboard to see the proportion of sales across genres in North America,Europe and Japan. I had scraped the required data from the original video_games.csv file, using pandas. The python code is present in util.py
+            and the data is present in the file genre_region.csv. ( Note: Due to lack of time and knowledge of javascript, I had to hardcode the values from genre_region.csv file into the main.js file(to get a dictionary of values).
+            You can check the values by running util.py and verify that they are the same).
+            The third question asks us to provide the best publisher for each genre. I created a scatterplot which indicates the best publisher in each genre based on the Global_Sales for their best game. I have introduced a tooltip,
+            which would indicate the global sales when you hover over the points. I had scraped the data from video_sales.csv using util3.py into genre_publisher.csv.</p>
+    <p> 2) Three Reasons why D3 was helpful </p>
+    <p>i) The Flexibility that it offers in terms of making unique visualizations using my own data. The eclectic variety of graphs on the d3-gallery is quite amusing.
+        ii) The Ease with which we can add interactivity to the graphs is quite appreciable. Javascript is relatively an easy scripting language to work with.
+        iii) We can add smooth transitions for updating elements. This is something I appreciated a lot while coding my pie-chart. As I was toggling over the buttons,
+            D3 was smoothly generating the pie-chart without much lag.</p>
+    <p> 3) Three Reasons why D3 may not be the best option </p>
+    <p> i) I personally had issues with the compatibility between version 5 and version 4. Functions like filter were throwing an error when used with version 5.
+        ii) From some research that I had done online, some functions in D3 apparently are not supported in older browsers.
+        iii) D3 does not automatically generate any graphs like Tablueau. This can be a disadvantage when you do not want a lot of customization. </p>
+    <p> 4) I have tried to incorporate as many principles as possible from the two articles.As mentioned in both the articles, I have used brighter, more contrasting colours while implementing the pie-chart. As indicated in "A Comprehensive Guide to Accessible Data Visualization"[2], I have added
+    white spaces in the pie-chart to separate elements for people with "Dueteranopia".Similarly, I have tried to make the titles of the graphs as comprehensive as possible and also provided a brief alt text indicating what actions can be performed to appreciate the interactivity of the graphs. As mentioned in
+    "Why Accessibility is at the Heart of Visualization"[1], providing access of the data is necessary to ensure data transperancy. I have appropriately provided both the .csv files that I have obtained by scraping data from the original video_games.csv. It is essential to be accomodative while using animations[1] to factor in people
+    with epilepsy, ADHD, parkinsons etc. I increased the delay in hovering over the scatterplot(tooltips) by taking that into account. My dashboard can still be difficult for the blind because a screen reader may not be able to read the underlying information of the data.I might consider adding more data labels and providing a link to the data
+    along with the graph, so that it can be interpreted by the screen reader.I'd also like to venture into different color palletes that can be "equitable to users of all circumstances and abilities"
+
+    <p> 5) For the second question, indicating the genre breakdown per region would have been more visually appealing and informative to view on an actual map. Also,adding links to the required fields of the data table could be more helpful for people using screen readers. Similarly, adding more data labels and tags would be helpful for the screen readers.
+        The main factors were time and lack of prior knowledge about data visualization using D3. I would like to venture more into these aspects while creating visualizations for the final project. I'd like to look at many more custom graphs that "narrate the story" more clearly and vivid colour palletes.</p>
+
+
+
     <!--Feel free to add more JavaScript files as needed-->
+
     <script type="text/javascript" src="main.js"></script>
+    <script type="text/javascript" src="scatter.js"></script>
+    <script type="text/javascript" src="barplot.js"></script>
+
+
+
 </body>
 </html>
